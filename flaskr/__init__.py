@@ -24,6 +24,7 @@ def create_app(test_config=None):
     db.init_app(app)
     from . import auth
     app.register_blueprint(auth.bp)
+    app.add_url_rule('/', endpoint='index')
 
     @app.route('/hello')
     def hello():
