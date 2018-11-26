@@ -10,7 +10,7 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 @bp.route('/register', methods=['GET', 'POST'])
 def register():
-    if request.method == 'PSOT':
+    if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
         db = get_db()
@@ -19,7 +19,7 @@ def register():
         if not username:
             error = 'Username is required!'
         elif not password:
-            error = 'Passworf is required!'
+            error = 'Password is required!'
         elif db.execute(
             'select id from user where username = ?', (username,)
         ).fetchone() is not None:
@@ -36,7 +36,7 @@ def register():
     return render_template('auth/register.html')
 
 
-@bp.route('/login', methods=['GET','POST'])
+@bp.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form['username']
@@ -58,7 +58,7 @@ def login():
             return redirect(url_for('index'))
 
         flash(error)
-    return render_template('autg/login.html')
+    return render_template('auth/login.html')
 
 
 @bp.before_app_request
