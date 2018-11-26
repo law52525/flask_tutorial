@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, url_for
 
 
 def create_app(test_config=None):
@@ -25,6 +25,8 @@ def create_app(test_config=None):
     from . import auth
     app.register_blueprint(auth.bp)
     app.add_url_rule('/', endpoint='index')
+    app.add_url_rule('/favicon.ico',
+                     redirect_to=url_for('static', filename='favicon.ico'))
 
     @app.route('/hello')
     def hello():
