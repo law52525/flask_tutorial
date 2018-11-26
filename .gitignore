@@ -1,4 +1,9 @@
+
+# dir
 venv/
 __pycache__/
 .idea/
 instance/
+
+# file
+env.bat
