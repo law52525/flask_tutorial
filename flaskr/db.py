@@ -17,7 +17,7 @@ def init_db():
         db.executescript(f.read.decode('utf-8'))
 
 
-@click.command('init.db')
+@click.command('init-db')
 @with_appcontext
 def init_db_command():
     init_db()
