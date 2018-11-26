@@ -5,6 +5,7 @@ __pycache__/
 .idea/
 instance/
 flaskr.egg-info/
+build/
 
 # file
 env.bat
